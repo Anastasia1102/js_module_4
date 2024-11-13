@@ -47,7 +47,14 @@ console.log("\n");
 
 // Напишіть функцію removeEmptyProperties, яка приймає об’єкт obj і видаляє всі властивості, значення яких є порожніми рядками, null, або undefined. Використайте Object.keys() для отримання ключів, а потім цикл for з умовою if для перевірки значень і видалення ключів.
 
-function removeEmptyProperties(obj) {}
+function removeEmptyProperties(obj) {
+  for (let key of Object.keys(obj)) {
+    if (obj[key] === undefined || obj[key] === null || obj[key] === "") {
+      delete obj[key];
+    }
+  }
+  return obj;
+}
 
 const profile = {
   name: "Alice",
@@ -59,58 +66,73 @@ const profile = {
 console.log(removeEmptyProperties(profile));
 // { name: "Alice", age: 25, country: "Ukraine" }
 
+console.log("\n");
+
 // Задача 4 (середня)
 
 // Створіть функцію countPropertiesByType, яка приймає об’єкт obj та тип даних type (наприклад, "string" або "number"). Функція повинна повертати кількість властивостей, значення яких відповідають зазначеному типу. Використайте Object.keys(), цикл for і умову if.
 
-// function countPropertiesByType(obj, type) {
-//   let count = 0;
-//   for (let key of Object.keys(obj)) {
-//     if (typeof obj[key] === type) {
-//       count++;
-//     }
-//   }
-//   return count;
-// }
+function countPropertiesByType(obj, type) {
+  let count = 0;
+  for (let key of Object.keys(obj)) {
+    if (typeof obj[key] === type) {
+      count++;
+    }
+  }
+  return count;
+}
 
-// const data = { name: "Alice", age: 25, isStudent: false, gpa: 3.8 };
-// console.log(countPropertiesByType(data, "string")); // 1
-// console.log(countPropertiesByType(data, "number")); // 2
+const data = { name: "Alice", age: 25, isStudent: false, gpa: 3.8 };
+console.log(countPropertiesByType(data, "string")); // 1
+console.log(countPropertiesByType(data, "number")); // 2
+
+console.log("\n");
 
 // Задача 5 (складна)
 
 // Напишіть функцію mergeObjectsWithCondition, яка приймає два об’єкти obj1 та obj2. Функція повинна об’єднати об’єкти, але тільки ті властивості з obj2, які мають значення, що є рядками або числами. Використайте Object.keys(), цикл for, і умову if для перевірки типу значення.
 
-// function mergeObjectsWithCondition(obj1, obj2) {
-//   for (let key of Object.keys(obj2)) {
-//     if (typeof obj2[key] === "string" || typeof obj2[key] === "number") {
-//       obj1[key] = obj2[key];
-//     }
-//   }
-//   return obj1;
-// }
+function mergeObjectsWithCondition(obj1, obj2) {
+  for (let key of Object.keys(obj2)) {
+    if (typeof obj2[key] === "string" || typeof obj2[key] === "number") {
+      obj1[key] = obj2[key];
+    }
+  }
+  return obj1;
+}
 
-// const obj1 = { name: "Alice", age: 25 };
-// const obj2 = { age: 30, city: "Kyiv", isStudent: false };
-// console.log(mergeObjectsWithCondition(obj1, obj2));
-// // { name: "Alice", age: 30, city: "Kyiv" }
+const obj1 = { name: "Alice", age: 25 };
+const obj2 = { age: 30, city: "Kyiv", isStudent: false };
+console.log(mergeObjectsWithCondition(obj1, obj2));
+// { name: "Alice", age: 30, city: "Kyiv" }
+
+console.log("\n");
 
 // Задача 6 (складна)
 
 // Створіть функцію getPropertiesWithPrefix, яка приймає об’єкт obj та рядок prefix. Функція повинна повертати новий об’єкт, який містить лише ті властивості з obj, ключі яких починаються з вказаного префікса. Використайте Object.keys(), цикл for, і умову if для перевірки префіксу.
 
-// function getPropertiesWithPrefix(obj, prefix) {
-//   const result = {};
-//   for (let key of Object.keys(obj)) {
-//     if (key.startsWith(prefix)) {
-//       result[key] = obj[key];
-//     }
-//   }
-//   return result;
-// }
+function getPropertiesWithPrefix(obj, prefix) {
+  let newObj = {};
+  for (let key of Object.keys(obj)) {
+    if (key.startsWith(prefix)) {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+}
 
-// const person = { name: "Alice", nickname: "Al", nationality: "Ukrainian", age: 25 };
-// console.log(getPropertiesWithPrefix(person, "na"));
-// // { name: "Alice", nationality: "Ukrainian" }
+const persons = {
+  name: "Alice",
+  nickname: "Al",
+  nationality: "Ukrainian",
+  age: 25,
+};
+console.log(getPropertiesWithPrefix(persons, "na"));
+// { name: "Alice", nationality: "Ukrainian" }
+
+console.log("\n");
+console.log("\n");
+console.log("\n");
 
 // Ці задачі допоможуть вам практикуватися з використанням Object.
