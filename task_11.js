@@ -121,17 +121,27 @@ console.log("\n");
 
 // Створіть функцію sumPropertyValues, яка приймає масив об’єктів items і рядок property. Функція повинна повертати суму всіх значень властивості property, які є числами. Якщо значення властивості не є числом, ігноруйте його.
 
-// function sumPropertyValues(items, property) {
-//   // ваш код тут
-// }
+function sumPropertyValues(items, property) {
+  let sumProperty = 0;
+  for (const item of items) {
+    if (typeof item[property] === "number") {
+      sumProperty += item[property];
+    }
+  }
+  return sumProperty;
+}
 
-// const items = [
-//   { name: "Apple", price: 2, quantity: 10 },
-//   { name: "Banana", price: 1, quantity: 5 },
-//   { name: "Orange", price: 1.5, quantity: 8 }
-// ];
+const items = [
+  { name: "Apple", price: 2, quantity: 10 },
+  { name: "Banana", price: 1, quantity: 5 },
+  { name: "Orange", price: 1.5, quantity: 8 },
+];
 
-// console.log(sumPropertyValues(items, "price")); // 4.5
-// console.log(sumPropertyValues(items, "quantity")); // 23
+console.log(sumPropertyValues(items, "price")); // 4.5
+console.log(sumPropertyValues(items, "quantity")); // 23
+
+console.log("\n");
+console.log("\n");
+console.log("\n");
 
 // Ці задачі допоможуть вам розібратися з роботою із колекціями значень властивостей у масиві об’єктів і навчать обробляти масиви даних для різних завдань.
